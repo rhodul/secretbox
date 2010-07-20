@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="appName">Secret Box</string>
+    <string name="aboutText">"\n© 2009 HERA Consulting Ltd.\nVšechna práva vyhrazena.\n\nPodmínky používání na www.gnugu.com\n\nPro podporu kontaktujte\nsupport@gnugu.com"</string>
+    <string name="aboutMenu">O aplikaci</string>
+	<!-- Displayed full screen when the user has no compartments -->
+	<string name="noCompartments">"Nemáte vytvořené žádné složky.\n\nPro přidání složky stiskněte <font fgcolor="#ffffffff"><b>Nabídka</b></font> a zvolte <font fgcolor="#ffffffff"><b>Nová</b></font> pro vytvoření nové tajnosti."</string>
+	<string name="noMediaCard">Tato aplikace vyžaduje vloženou paměťovou kartu. Prosím vložte paměťovou kartu a spusťte aplikaci znovu.</string>
+	<string name="newPassword">Vložte nové heslo</string>
+	<string name="newPasswordRepeat">Zopakujte nové heslo</string>
+	<string name="newSecretBoxText">Tohle je první použití Secret Boxu nebo chybí datový soubor.\nProsím vytvořte nové heslo.</string>
+	<string name="newSecretBoxTitle">Nový Secret Box</string>
+    <string name="oldPassword">Vložte stávající heslo</string>
+    <string name="changePasswordText">Prosím vložte stávající a nové heslo.</string>
+	<string name="dbCorrupted">Datový soubor je poškozen.\nSmažte ho prosím z paměťové karty a spusťte aplikaci znova.</string>
+	<string name="error">Chyba</string>
+    <string name="delete">Smazat</string>
+	<string name="loginText">Přihlašovací jméno</string>
+	<string name="password">Heslo</string>
+    <string name="changePassword">Změna hesla</string>
+    <string name="passwordChanged">Heslo změněno.</string>
+	<string name="wrongPassword">Chybné heslo. Zkuste znovu.</string>
+    <string name="wrongOldPassword">Stávající heslo je chybné. Zkuste znovu.</string>
+	<string name="secretCount">(%d tajností)</string>
+    <string name="insert">Nová</string>
+    <string name="edit">Změnit</string>
+    <string name="compartmentCreated">Nová složka vytvořena.</string>
+    <string name="compartmentChanged">Název složky změněn.</string>
+    <string name="compartmentDeleted">Složka smazána.</string>
+    <string name="cannotDeleteCopmartment">Nelze smazat složku dokud obsahuje tajnosti.</string>
+    <string name="compartmentNameHint">Vložte název složky</string>
+    <string name="showSecrets">Zobrazit tajnosti</string>
+    <string name="sort">Třídit</string>
+    <!-- Displayed full screen when compartment has no secrets.
+         Because this is a format string we need to escape the HTML tags. -->
+    <string name="noSecrets"><![CDATA["Vaše složka <font color="#ffffff"><b>%s</b></font> neobsahuje tajnosti.<br/><br/>Pro přidání tajnosti stiskněte <font color="#ffffff"><b>Nabídka</b></font> a zvolte <font color="#ffffff"><b>Nová</b></font> pro vytvoření nové tajnosti."]]></string>
+    <string name="deleteSecret"><![CDATA["<font color="#ffffff"><b>%s</b></font> bude smazáno."]]></string>
+    <string name="secretCreated">Vytvořena nová tajnost.</string>
+    <string name="secretChanged">Tajnost změněna.</string>
+    <string name="secretDeleted">Tajnost smazána.</string>
+    <string name="secretTitleHint">Vložte název tajnosti</string>
+    <string name="secretBodyHint">Vložte tajnost</string>
+    <string name="pictureCount">0 obrázků</string>
+    <string name="pictures">Obrázky</string>
+    <!-- Displayed full screen when secret has no images.
+         Because this is a format string we need to escape the HTML tags. -->
+    <string name="noPictures"><![CDATA["Pokud chcete mít možnost ukládat do Vašich tajností šifrované obrázky objednejte si prosím <font color="#ffffff"><b>Secret Box+</b></font>.<br/><br/>Navštivte www.gnugu.com/secret_box_plus pro další informace!"]]></string>
+    <string name="cannotAddPictures">Obrázky se nedají přidat bez titulku. Prosím editujte titulek.</string>
+    <string name="translationCreditsTitle"><b>Translation credits</b></string>
+    <string name="translationCreditsBlurb">The translation of this application was carried out by:</string>
+    <string name="translationCredits">Andreas Grunewald (German)\nDominique Hazael-Massieux (French)\nŠtefan Števko (Czech)\nMichal Pekarovič (Slovak)\nSilvia Pascale (Spanish)\nAndrey Sitnik (Russian)\nHiAPK.com (中文)</string>
+</resources>

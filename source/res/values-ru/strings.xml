@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="appName">Ящик секретов</string>
+    <string name="aboutText">"\n© 2009 HERA Consulting Ltd.\nВсе права защищены.\n\nУсловия использования на www.gnugu.com\n\nОтправляйте ваши вопросы на \nsupport@gnugu.com"</string>
+    <string name="aboutMenu">О программе</string>
+	<!-- Displayed full screen when the user has no compartments -->
+	<string name="noCompartments">"У вас нет хранилищ.\n\nЧтобы их создать, нажмите <font fgcolor="#ffffffff"><b>Меню</b></font> и выберите <font fgcolor="#ffffffff"><b>Добавить</b></font>."</string>
+	<string name="noMediaCard">Этому приложению нужна карта памяти. Пожалуйста вставьте её и запустите программу снова.</string>
+	<string name="newPassword">Введите новый пароль</string>
+	<string name="newPasswordRepeat">Повторите новый пароль</string>
+	<string name="newSecretBoxText">Это первый запуск ящик секретов или данные были повреждены.\nПожалуйста введи новый пароль.</string>
+	<string name="newSecretBoxTitle">Новый ящик секретов</string>
+    <string name="oldPassword">Введите текущий пароль</string>
+    <string name="changePasswordText">Пожалуйста введите текущий и новый пароль.</string>
+	<string name="dbCorrupted">База данных повреждена.\nПожалуйста удалите файл с карты памяти и запустите программу снова.</string>
+	<string name="error">Ошибка</string>
+    <string name="delete">Удалить</string>
+	<string name="loginText">Вход</string>
+	<string name="password">Пароль</string>
+    <string name="changePassword">Сменить пароль</string>
+    <string name="passwordChanged">Пароль изменён.</string>
+	<string name="wrongPassword">Неправильный пароль. Попробуйте снова.</string>
+    <string name="wrongOldPassword">Текущий пароль неправильный. Попробуйте снова.</string>
+	<string name="secretCount">(%d секретов)</string>
+    <string name="insert">Добавить</string>
+    <string name="edit">Изменить</string>
+    <string name="compartmentCreated">Новое хранилище создано.</string>
+    <string name="compartmentChanged">Имя хранилища изменено.</string>
+    <string name="compartmentDeleted">Хранилище удаленно.</string>
+    <string name="cannotDeleteCopmartment">Не могу удалить хранилище пока в нём есть секреты.</string>
+    <string name="compartmentNameHint">Введите имя хранилища</string>
+    <string name="showSecrets">Показать секреты</string>
+    <string name="sort">Сортировка</string>
+    <!-- Displayed full screen when compartment has no secrets.
+         Because this is a format string we need to escape the HTML tags. -->
+    <string name="noSecrets"><![CDATA["Ваше хранилище <font color="#ffffff"><b>%s</b></font> не содержит секретов.<br/><br/>Чтобы их создать, нажмите <font color="#ffffff"><b>Меню</b></font> и выберите <font color="#ffffff"><b>Добавить</b></font>."]]></string>
+    <string name="deleteSecret"><![CDATA["<font color="#ffffff"><b>%s</b></font> будет удалён."]]></string>
+    <string name="secretCreated">Новый секрет добавлен.</string>
+    <string name="secretChanged">Секрет изменён.</string>
+    <string name="secretDeleted">Секрет удалён.</string>
+    <string name="secretTitleHint">Введите заголовок секрета</string>
+    <string name="secretBodyHint">Введите секрет</string>
+    <string name="pictureCount">0 изображений</string>
+    <string name="pictures">Изображения</string>
+    <!-- Displayed full screen when secret has no images.
+         Because this is a format string we need to escape the HTML tags. -->
+    <string name="noPictures"><![CDATA["Если вы хотите хранить в секретах защифрованные изображения, то купите <font color="#ffffff"><b>Secret Box+</b></font>.<br/><br/>Смотрите детали на www.gnugu.com/secret_box_plus"]]></string>
+    <string name="cannotAddPictures">Изображения не могут быть добавлены в секрет без заголовка. Введите его сначала.</string>
+    <string name="translationCreditsTitle"><b>Переводчики</b></string>
+    <string name="translationCreditsBlurb">Это приложение было с заботой переведено:</string>
+    <string name="translationCredits">Andreas Grunewald (немецкий)\nDominique Hazael-Massieux (французский)\nŠtefan Števko (чешский)\nMichal Pekarovič (словацкий)\nSilvia Pascale (испанский)\nАндрей Ситник (русский)\nHiAPK.com (中文)</string>
+</resources>
