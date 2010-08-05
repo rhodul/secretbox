@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 	<string name="appName">Secret Box</string>
     <string name="aboutText">"\n© 2009 HERA Consulting Ltd.\nTodos los derechos reservados.\n\nTérminos de uso en www.gnugu.com\n\nPara soporte contacte\nsupport@gnugu.com"</string>
     <string name="aboutMenu">Acerca de</string>

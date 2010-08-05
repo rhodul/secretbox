@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 	<string name="appName">Ящик секретов</string>
     <string name="aboutText">"\n© 2009 HERA Consulting Ltd.\nВсе права защищены.\n\nУсловия использования на www.gnugu.com\n\nОтправляйте ваши вопросы на \nsupport@gnugu.com"</string>
     <string name="aboutMenu">О программе</string>

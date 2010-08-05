@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 	<string name="appName">秘密箱</string>
     <string name="aboutText">"\n© 2009 HERA Consulting Ltd.\n保留所有权利。\n\n我们的团队在 www.gnugu.com\n\n寻求支持请联系\nsupport@gnugu.com"</string>
     <string name="aboutMenu">关于</string>
