@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.gnugu.secretbox" android:versionCode="109"
-	android:versionName="1.0.9">
+	android:installLocation="auto"
+	package="com.gnugu.secretbox" android:versionCode="110"
+	android:versionName="1.0.10">
+	
+	<supports-screens
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:anyDensity="true" />
+	
 	<application android:name="Application" android:icon="@drawable/icon"
 		android:label="@string/appName">
 		
