@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 	<string name="appName">Secret Box</string>
-    <string name="aboutText">"\n© 2009 HERA Consulting Ltd.\nAlle rechten voorbehouden.\n\nAlgemene Voorwaarden op www.gnugu.com\n\nNeem voor ondersteuning contact op met\nsupport@gnugu.com"</string>
+    <string name="aboutText">"\n© 2009 HERA Consulting Ltd.\nAlle rechten voorbehouden.\n\nDe Algemene Voorwaarden zijn te vinden op www.gnugu.com\n\nNeem voor ondersteuning contact op met\nsupport@gnugu.com"</string>
     <string name="aboutMenu">Over...</string>
 	<!-- Displayed full screen when the user has no compartments -->
 	<string name="noCompartments">"Je hebt nog geen compartimenten.\n\nOm compartimenten toe te voegen, kies <font fgcolor="#ffffffff"><b>Menu</b></font> en selecteer <font fgcolor="#ffffffff"><b>Nieuw</b></font> om een nieuw, leeg compartiment aan te maken."</string>
@@ -10,9 +10,9 @@
 	<string name="newPasswordRepeat">Herhaal nieuw wachtwoord</string>
 	<string name="newSecretBoxText">Dit is de eerste keer dat Secret Box gestart is of het databestand kan niet gevonden worden.\nVoer een nieuw wachtwoord in.</string>
 	<string name="newSecretBoxTitle">Nieuwe Secret Box</string>
-    <string name="oldPassword">Voer oud wachtwoord in</string>
-    <string name="changePasswordText">Voer het oude en het nieuwe wachtwoord in.</string>
-	<string name="dbCorrupted">Database-bestand is beschadigd.\nVerwijder de database van de geheugenkaart en begin opnieuw.</string>
+    <string name="oldPassword">Voer huidig wachtwoord in</string>
+    <string name="changePasswordText">Voer het huidige en het nieuwe wachtwoord in.</string>
+	<string name="dbCorrupted">Het database-bestand is beschadigd.\nVerwijder de database van de geheugenkaart en begin opnieuw.</string>
 	<string name="error">Fout</string>
     <string name="delete">Verwijderen</string>
 	<string name="loginText">Log in</string>
@@ -20,20 +20,20 @@
     <string name="changePassword">Wachtwoord aanpassen</string>
     <string name="passwordChanged">Wachtwoord aangepast.</string>
 	<string name="wrongPassword">Wachtwoord onjuist. Probeer opnieuw.</string>
-    <string name="wrongOldPassword">Oude wachtwoord onjuist. Probeer opnieuw.</string>
+    <string name="wrongOldPassword">Huidig wachtwoord onjuist. Probeer opnieuw.</string>
 	<string name="secretCount">(%d geheimen)</string>
     <string name="insert">Nieuw</string>
     <string name="edit">Aanpassen</string>
     <string name="compartmentCreated">Nieuw compartiment aangemaakt.</string>
     <string name="compartmentChanged">Naam compartiment aangepast.</string>
-    <string name="compartmentDeleted">Compartiment verwijderd.</string>
-    <string name="cannotDeleteCopmartment">Kan compartiment niet verwijderen als het invoer bevat.</string>
+    <string name="compartmentDeleted">Het compartiment is verwijderd.</string>
+    <string name="cannotDeleteCopmartment">Kan compartiment niet verwijderen als het geheimen bevat.</string>
     <string name="compartmentNameHint">Voer gewenste naam compartiment in</string>
     <string name="showSecrets">Geheimen weergeven</string>
     <string name="sort">Sorteren</string>
     <!-- Displayed full screen when compartment has no secrets.
          Because this is a format string we need to escape the HTML tags. -->
-    <string name="noSecrets"><![CDATA["Het compartiment <font color="#ffffff"><b>%s</b></font> bevat geen geheimen.<br/><br/>Om im te voeren, kies <font color="#ffffff"><b>Menu</b></font> en selecteer <font color="#ffffff"><b>Nieuw</b></font> om een nieuw geheim in te voeren."]]></string>
+    <string name="noSecrets"><![CDATA["Het compartiment <font color="#ffffff"><b>%s</b></font> bevat geen geheimen.<br/><br/>Om een geheim in te voeren, kies <font color="#ffffff"><b>Menu</b></font> en selecteer <font color="#ffffff"><b>Nieuw</b></font> om een nieuw geheim in te voeren."]]></string>
     <string name="deleteSecret"><![CDATA["<font color="#ffffff"><b>%s</b></font> zal worden verwijderd."]]></string>
     <string name="secretCreated">Nieuw geheim aangemaakt.</string>
     <string name="secretChanged">Geheim aangepast.</string>
@@ -46,7 +46,7 @@
          Because this is a format string we need to escape the HTML tags. -->
     <string name="noPictures"><![CDATA["Indien je versleutelde afbeeldingen toe wilt voegen, dien je <font color="#ffffff"><b>Secret Box+</b></font> aan te schaffen.<br/><br/>Kijk op www.gnugu.com/secret_box_plus voor meer informatie!"]]></string>    
     <string name="cannotAddPictures">Afbeeldingen kunnen niet aan een geheim zonder titel worden toegevoegd. Maak eerst een titel aan.</string>
-    <string name="translationCreditsTitle"><b>Translation credits</b></string>
+    <string name="translationCreditsTitle"><b>Vertaling</b></string>
     <string name="translationCreditsBlurb">De vertaling van deze applicatie is uitgevoerd door:</string>
-    <string name="translationCredits">Andreas Grunewald (German)\nDominique Hazael-Massieux (French)\nŠtefan Števko (Czech)\nMichal Pekarovič (Slovak)\nSilvia Pascale (Spanish)\nAndrey Sitnik (Russian)\nHiAPK.com (中文)\nMaarten Hulskemper (Dutch)</string>
+    <string name="translationCredits">Andreas Grunewald (Duits)<br/>Dominique Hazael-Massieux (Frans)<br/>Štefan Števko (Tsjechisch)<br/>Michal Pekarovič (Slowaaks)<br/>Silvia Pascale (Spaans)<br/>Andrey Sitnik (Russisch)<br/>HiAPK.com (中文)\nMaarten Hulskemper (Nederlands)</string>
 </resources>
