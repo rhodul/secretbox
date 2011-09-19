@@ -48,5 +48,5 @@
     <string name="cannotAddPictures">圖片不能新增沒有標題的秘密。請先編輯標題。</string>
     <string name="translationCreditsTitle"><b>翻譯致謝</b></string>
     <string name="translationCreditsBlurb">本程式的翻譯工作由:</string>
-    <string name="translationCredits">Andreas Grunewald (German)\nDominique Hazael-Massieux (French)\n?tefan ?tevko (Czech)\nMichal Pekarovi? (Slovak)\nSilvia Pascale (Spanish)\nAndrey Sitnik (Russian)\nHiAPK.com (中文)</string>
+    <string name="translationCredits">Andreas Grunewald (German)\nDominique Hazael-Massieux (French)\n?tefan ?tevko (Czech)\nMichal Pekarovi? (Slovak)\nSilvia Pascale (Spanish)\nAndrey Sitnik (Russian)\nHiAPK.com (中文)\nMaarten Hulskemper (Nederlands)</string>
 </resources>

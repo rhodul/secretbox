@@ -48,5 +48,5 @@
     <string name="cannotAddPictures">Des images ne peuvent pas être ajoutées a Secret sans titre. Veuillez commencer par éditer le titre.</string>
     <string name="translationCreditsTitle"><b>Translation credits</b></string>
     <string name="translationCreditsBlurb">The translation of this application was carried out by:</string>
-    <string name="translationCredits">Andreas Grunewald (German)\nDominique Hazael-Massieux (French)\nŠtefan Števko (Czech)\nMichal Pekarovič (Slovak)\nSilvia Pascale (Spanish)\nAndrey Sitnik (Russian)\nHiAPK.com (中文)</string>
+    <string name="translationCredits">Andreas Grunewald (German)\nDominique Hazael-Massieux (French)\nŠtefan Števko (Czech)\nMichal Pekarovič (Slovak)\nSilvia Pascale (Spanish)\nAndrey Sitnik (Russian)\nHiAPK.com (中文)\nMaarten Hulskemper (Nederlands)</string>
 </resources>

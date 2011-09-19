@@ -48,5 +48,5 @@
     <string name="cannotAddPictures">Bilder können nicht zu Geheimnisen ohne Titel hinzugefügt werden. Editiere zuerst den Titel.</string>
     <string name="translationCreditsTitle"><b>Übersetzungen</b></string>
     <string name="translationCreditsBlurb">Die Übersetzung dieser Anwendung wurden durchgeführt von:</string>
-    <string name="translationCredits">Andreas Grunewald (Deutsch)\nDominique Hazael-Massieux (Französisch)\nŠtefan Števko (Tschechisch)\nMichal Pekarovič (Slowakisch)\nSilvia Pascale (Spanisch)\nAndrey Sitnik (Russian)\nHiAPK.com (中文)</string>
+    <string name="translationCredits">Andreas Grunewald (Deutsch)\nDominique Hazael-Massieux (Französisch)\nŠtefan Števko (Tschechisch)\nMichal Pekarovič (Slowakisch)\nSilvia Pascale (Spanisch)\nAndrey Sitnik (Russian)\nHiAPK.com (中文)\nMaarten Hulskemper (Nederlands)</string>
 </resources>

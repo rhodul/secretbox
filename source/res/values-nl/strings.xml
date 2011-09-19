@@ -48,5 +48,5 @@
     <string name="cannotAddPictures">Afbeeldingen kunnen niet aan een geheim zonder titel worden toegevoegd. Maak eerst een titel aan.</string>
     <string name="translationCreditsTitle"><b>Vertaling</b></string>
     <string name="translationCreditsBlurb">De vertaling van deze applicatie is uitgevoerd door:</string>
-    <string name="translationCredits">Andreas Grunewald (Duits)<br/>Dominique Hazael-Massieux (Frans)<br/>Štefan Števko (Tsjechisch)<br/>Michal Pekarovič (Slowaaks)<br/>Silvia Pascale (Spaans)<br/>Andrey Sitnik (Russisch)<br/>HiAPK.com (中文)\nMaarten Hulskemper (Nederlands)</string>
+    <string name="translationCredits">Andreas Grunewald (Duits)\nDominique Hazael-Massieux (Frans)\nŠtefan Števko (Tsjechisch)\nMichal Pekarovič (Slowaaks)\nSilvia Pascale (Spaans)\nAndrey Sitnik (Russisch)\nHiAPK.com (中文)\nMaarten Hulskemper (Nederlands)</string>
 </resources>

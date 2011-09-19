@@ -48,5 +48,5 @@
     <string name="cannotAddPictures">No se pueden agregar imágenes a un secreto sin título. Primero edite el título.</string>
     <string name="translationCreditsTitle"><b>Créditos de la traducción</b></string>
     <string name="translationCreditsBlurb">La traducción de esta aplicación fue realizada por:</string>
-    <string name="translationCredits">Andreas Grunewald (Alemán)\nDominique Hazael-Massieux (Francés)\nŠtefan Števko (Checo)\nMichal Pekarovič (Esovaco)\nSilvia Pascale (Español)\nAndrey Sitnik (Russian)\nHiAPK.com (中文)</string>
+    <string name="translationCredits">Andreas Grunewald (Alemán)\nDominique Hazael-Massieux (Francés)\nŠtefan Števko (Checo)\nMichal Pekarovič (Esovaco)\nSilvia Pascale (Español)\nAndrey Sitnik (Russian)\nHiAPK.com (中文)\nMaarten Hulskemper (Nederlands)</string>
 </resources>
