@@ -1,5 +1,5 @@
 /**
- * Copyright © 2009 HERA Consulting Ltd.  
+ * Copyright ï¿½ 2009 HERA Consulting Ltd.  
  */
 package com.gnugu.secretbox;
 
