@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="AppTheme" parent="@style/_AppTheme">
+      <item name="actionBarStyle">@style/SecretBox.ActionBar</item>
+      <item name="actionBarTabStyle">@style/TabAppTheme</item>
+      <item name="actionBarTabBarStyle">@style/TabBarAppTheme</item>
+      <item name="actionBarTabTextStyle">@style/TabTextAppTheme</item>
+      <item name="android:editTextStyle">@style/EditTextAppTheme</item>
+      <item name="android:textViewStyle">@style/SecretBox.TextAppearance</item>
+
+    <item name="android:textSelectHandleLeft">@drawable/apptheme_text_select_handle_left</item>
+    <item name="android:textSelectHandleRight">@drawable/apptheme_text_select_handle_right</item>
+    <item name="android:textSelectHandle">@drawable/apptheme_text_select_handle_middle</item>
+
+  </style>
+
+</resources>

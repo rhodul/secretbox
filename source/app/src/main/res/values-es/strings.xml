@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	<string name="appName">Secret Box</string>
+    <string name="copyrightText"><![CDATA["
+    <h3>© 2009 HERA Consulting Ltd.</h3>
+    Todos los derechos reservados.
+    <p>
+    Términos de uso en www.gnugu.com
+    <br/>
+    Para soporte contacte support@gnugu.com
+    </p>
+    <p>
+    versión: %s
+    </p>
+    "]]></string>
+	<string name="noMediaCard">Esta aplicación requiere tarjeta de medios. Por favor inserte la tarjeta de medios y comience otra vez.</string>
+	<string name="newPassword">Escriba nueva contraseña</string>
+	<string name="newPasswordRepeat">Reescriba nueva contraseña</string>
+	<string name="newSecretBoxText">Es la primera vez que Secret Box es utilizada o no se encuentra el archivo de datos.\nPor favor cree una nueva contraseña.</string>
+	<string name="newSecretBoxTitle">Nueva Secret Box</string>
+    <string name="oldPassword">Escriba su contraseña actual</string>
+    <string name="changePasswordText">Por favor escriba sus contraseñas actual y nueva.</string>
+	<string name="dbCorrupted">El archivo de la base de datos está corrupto.\nPor favor borre el archivo de la tarjeta de medios y comience otra vez.</string>
+	<string name="error">Error</string>
+    <string name="delete">Borrar</string>
+	<string name="loginText">Entrar</string>
+	<string name="password">Contraseña</string>
+    <string name="changePassword">Cambiar contraseña</string>
+    <string name="passwordChanged">Contraseña cambiada.</string>
+	<string name="wrongPassword">Contraseña incorrecta. Intente otra vez.</string>
+    <string name="wrongOldPassword">Contraseña actual incorrecta. Intente otra vez.</string>
+	<string name="secretCount">(%d secretos)</string>
+    <string name="insert">Nuevo</string>
+    <string name="edit">Editar</string>
+    <string name="compartmentCreated">Nuevo compartimento creado.</string>
+    <string name="compartmentChanged">Nombre de compartimento cambiado.</string>
+    <string name="compartmentDeleted">Compartimento borrado.</string>
+    <string name="cannotDeleteCopmartment">No se puede borrar un compartimento que contenga secretos.</string>
+    <string name="compartmentNameHint">Escriba el nombre del compartimento</string>
+    <string name="showSecrets">Mostrar secretos</string>
+    <string name="sort">Ordenar</string>
+    <string name="deleteSecret"><![CDATA["El secreto <b>%s</b> será borrado."]]></string>
+    <string name="secretCreated">Nuevo secreto creado.</string>
+    <string name="secretChanged">Secreto modificado.</string>
+    <string name="secretDeleted">Secreto borrado.</string>
+    <string name="secretTitleHint">Escriba el título del secreto</string>
+    <string name="secretBodyHint">Escriba el secreto</string>
+    <string name="pictures">Imágenes</string>
+    <string name="noPictures"><![CDATA["Si desea agregar imágenes cifradas a sus secretos por favor adquiera <b>Secret Box+</b>.<br/><br/>Para más detalles, visite <a href="https://play.google.com/store/apps/details?id=com.gnugu.secretboxplus"><b>Secret Box+</b></a> !"]]></string>
+    <string name="cannotAddPictures">No se pueden agregar imágenes a un secreto sin título. Primero edite el título.</string>
+    <string name="nothing_here">Vacío</string>
+    <string name="secret">Secreto</string>
+
+    <string name="about">Acerca de</string>
+
+    <string name="aboutText"><![CDATA["
+    <h4>Créditos de la traducción</h4>
+    <p>
+    La traducción de esta aplicación fue realizada por:<br/>
+    </p>
+    <p>
+    Andreas Grunewald (Alemán)<br/>Dominique Hazael-Massieux (Francés)<br/>Štefan Števko (Checo)<br/>Michal Pekarovič (Esovaco)<br/>Silvia Pascale (Español)<br/>Andrey Sitnik (Russian)<br/>HiAPK.com (中文)<br/>Maarten Hulskemper (Nederlands)
+    </p>
+    "]]></string>
+</resources>

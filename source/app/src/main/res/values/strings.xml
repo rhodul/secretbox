@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="appName">Secret Box</string>
+    <string name="copyrightText">
+<![CDATA["
+    <h3>© 2009 HERA Consulting Ltd.</h3>
+    All rights reserved.
+    <p>
+    Terms of use at www.gnugu.com
+    <br/>
+    For support contact support@gnugu.com
+    </p>
+    <p>
+    version: %s
+    </p>
+    "]]>
+    </string>
+    <!-- Displayed full screen when the user has no compartments -->
+    <string name="noMediaCard">This application requires media card to be ready. Please insert media card and start again.</string>
+    <string name="newPassword">Type new password</string>
+    <string name="newPasswordRepeat">Repeat new password</string>
+    <string name="newSecretBoxText">This is the first time Secret Box is being used or data file is missing.\nPlease create a new password.</string>
+    <string name="newSecretBoxTitle">New Secret Box</string>
+    <string name="oldPassword">Type existing password</string>
+    <string name="changePasswordText">Please type in existing and new password.</string>
+    <string name="dbCorrupted">Database file is corrupted.\nPlease delete the file from media card and start over.</string>
+    <string name="error">Error</string>
+    <string name="delete">Delete</string>
+    <string name="loginText">Login</string>
+    <string name="password">Password</string>
+    <string name="changePassword">Change password</string>
+    <string name="passwordChanged">Password changed.</string>
+    <string name="wrongPassword">Wrong password. Try again.</string>
+    <string name="wrongOldPassword">Existing password is wrong. Try again.</string>
+    <string name="secretCount">(%d secrets)</string>
+    <string name="insert">New</string>
+    <string name="edit">Edit</string>
+    <string name="compartmentCreated">New compartment created.</string>
+    <string name="compartmentChanged">Compartment name changed.</string>
+    <string name="compartmentDeleted">Compartment deleted.</string>
+    <string name="cannotDeleteCopmartment">Cannot delete compartment while it still has secrets.</string>
+    <string name="compartmentNameHint">Type compartment name</string>
+    <string name="showSecrets">Show secrets</string>
+    <string name="sort">Sort</string>
+    <!--
+         Displayed full screen when compartment has no secrets.
+         Because this is a format string we need to escape the HTML tags.
+    -->
+    <string name="deleteSecret"><![CDATA["<b>%s</b> will be deleted."]]></string>
+    <string name="secretCreated">New secret created.</string>
+    <string name="secretChanged">Secret changed.</string>
+    <string name="secretDeleted">Secret deleted.</string>
+    <string name="secretTitleHint">Type secret title</string>
+    <string name="secretBodyHint">Type the secret</string>
+    <string name="pictures">Pictures</string>
+    <string name="noPictures"><![CDATA["If you would like to add encrypted pictures to your secrets please purchase <b>Secret Box+</b>.<br/><br/>Visit <a href="https://play.google.com/store/apps/details?id=com.gnugu.secretboxplus"><b>Secret Box+</b></a> for more details!"]]></string>
+    <string name="secret">Secret</string>
+
+    <!--
+         Displayed full screen when secret has no images.
+         Because this is a format string we need to escape the HTML tags.
+    -->
+    <string name="cannotAddPictures">Pictures cannot be added for a secret with no title. Edit the title first.</string>
+    <string name="nothing_here">Nothing Here</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="about">About</string>
+    <string name="aboutText">
+<![CDATA["
+    <h4>Translation credits</h4>
+    <p>
+    The translation of this application was carried out by:<br/>
+    </p>
+    <p>
+    Andreas Grunewald (German)<br/>Dominique Hazael-Massieux (French)<br/>Štefan Števko (Czech)<br/>Michal Pekarovič (Slovak)<br/>Silvia Pascale (Spanish)<br/>Andrey Sitnik (Russian)<br/>HiAPK.com (中文)<br/>Maarten Hulskemper (Nederlands)
+    </p>
+    "]]>
+    </string>
+
+</resources>

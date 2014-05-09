@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	<string name="appName">Secret Box</string>
+    <string name="copyrightText"><![CDATA["
+    <h3>© 2009 HERA Consulting Ltd.</h3>
+    Alle Rechte vorbehalten.
+    <p>
+    Nutzungsbedingungen auf www.gnugu.com
+    <br/>
+    Den Support erreicht man unter support@gnugu.com
+    </p>
+    <p>
+    Version: %s
+    </p>
+    "]]></string>
+	<string name="noMediaCard">Diese Applikation benötigt eine Speicherkarte. Bitte legen sie eine Speicherkarte ein und starten sie das Programm neu.</string>
+	<string name="newPassword">Neues Passwort eingeben</string>
+	<string name="newPasswordRepeat">Neues Passwort wiederholen</string>
+	<string name="newSecretBoxText">Das ist das Erste mal, dass Secret Box verwendet wird, oder die Datendatei fehlt.\nBitte erstelle ein neues Passwort.</string>
+	<string name="newSecretBoxTitle">Neue Secret Box</string>
+    <string name="oldPassword">Altes Passwort eingeben</string>
+    <string name="changePasswordText">Bitte altes und neues Password eingeben.</string>
+	<string name="dbCorrupted">Datenbank Datei ist beschädigt.\nBitte lösche die Datei von der Speicherkarte und fange nochmal von vorn an.</string>
+	<string name="error">Fehler</string>
+    <string name="delete">Löschen</string>
+	<string name="loginText">Login</string>
+	<string name="password">Passwort</string>
+    <string name="changePassword">Passwort ändern</string>
+    <string name="passwordChanged">Password geändert.</string>
+	<string name="wrongPassword">Falsches Passwort. Erneut versuchen.</string>
+    <string name="wrongOldPassword">Altes Passwort ist falsch. Versuchs nochmal.</string>
+	<string name="secretCount">(%d Geheimnisse)</string>
+    <string name="insert">Neu</string>
+    <string name="edit">Ändern</string>
+    <string name="compartmentCreated">Neues Fach erstellt.</string>
+    <string name="compartmentChanged">Name des Fachs geändert.</string>
+    <string name="compartmentDeleted">Fach gelöscht.</string>
+    <string name="cannotDeleteCopmartment">Kann das Fach nicht löschen, da es noch Geheimnisse enthält.</string>
+    <string name="compartmentNameHint">Namen des Fachs eingeben</string>
+    <string name="showSecrets">Zeige Geheimnisse</string>
+    <string name="sort">Sortieren</string>
+    <string name="deleteSecret"><![CDATA["<b>%s</b> wird gelöscht."]]></string>
+    <string name="secretCreated">Neues Geheimnis erstellt.</string>
+    <string name="secretChanged">Geheimnis geändert.</string>
+    <string name="secretDeleted">Geheimnis gelöscht.</string>
+    <string name="secretTitleHint">Geheimnis-Titel eingeben</string>
+    <string name="secretBodyHint">Geheimnis eingeben</string>
+    <string name="pictures">Bilder</string>
+    <string name="noPictures"><![CDATA["Wenn du verschlüsselte Bilder zu deinen Geheimnissen hinzufügen willst, dann kaufe bitte <b>Secret Box+</b>.<br/><br/>Mehr Details gibt es auf <a href="https://play.google.com/store/apps/details?id=com.gnugu.secretboxplus"><b>Secret Box+</b></a> !"]]></string>
+    <string name="cannotAddPictures">Bilder können nicht zu Geheimnisen ohne Titel hinzugefügt werden. Editiere zuerst den Titel.</string>
+    <string name="about">Über</string>
+    <string name="nothing_here">Leer</string>
+    <string name="secret">Geheimnis</string>
+
+    <string name="aboutText"><![CDATA["
+    <h4>Übersetzungen</h4>
+    <p>
+    Die Übersetzung dieser Anwendung wurden durchgeführt von:<br/>
+    </p>
+    <p>
+    Andreas Grunewald (Deutsch)<br/>Dominique Hazael-Massieux (Französisch)<br/>Štefan Števko (Tschechisch)<br/>Michal Pekarovič (Slowakisch)<br/>Silvia Pascale (Spanisch)<br/>Andrey Sitnik (Russian)<br/>HiAPK.com (中文)<br/>Maarten Hulskemper (Nederlands)
+    </p>
+    "]]></string>
+</resources>

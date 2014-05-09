@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	<string name="appName">Secret Box</string>
+    <string name="copyrightText"><![CDATA["
+    <h3>© 2009 HERA Consulting Ltd.</h3>
+    Alle rechten voorbehouden.
+    <p>
+    De Algemene Voorwaarden zijn te vinden op www.gnugu.com
+    <br/>
+    Neem voor ondersteuning contact op met support@gnugu.com
+    </p>
+    <p>
+    version: %s
+    </p>
+    "]]></string>
+	<string name="noMediaCard">De geheugenkaart is niet geplaatst. Plaats geheugenkaart en probeer opnieuw.</string>
+	<string name="newPassword">Voer nieuw wachtwoord in</string>
+	<string name="newPasswordRepeat">Herhaal nieuw wachtwoord</string>
+	<string name="newSecretBoxText">Dit is de eerste keer dat Secret Box gestart is of het databestand kan niet gevonden worden.\nVoer een nieuw wachtwoord in.</string>
+	<string name="newSecretBoxTitle">Nieuwe Secret Box</string>
+    <string name="oldPassword">Voer huidig wachtwoord in</string>
+    <string name="changePasswordText">Voer het huidige en het nieuwe wachtwoord in.</string>
+	<string name="dbCorrupted">Het database-bestand is beschadigd.\nVerwijder de database van de geheugenkaart en begin opnieuw.</string>
+	<string name="error">Fout</string>
+    <string name="delete">Verwijderen</string>
+	<string name="loginText">Log in</string>
+	<string name="password">Wachtwoord</string>
+    <string name="changePassword">Wachtwoord aanpassen</string>
+    <string name="passwordChanged">Wachtwoord aangepast.</string>
+	<string name="wrongPassword">Wachtwoord onjuist. Probeer opnieuw.</string>
+    <string name="wrongOldPassword">Huidig wachtwoord onjuist. Probeer opnieuw.</string>
+	<string name="secretCount">(%d geheimen)</string>
+    <string name="insert">Nieuw</string>
+    <string name="edit">Aanpassen</string>
+    <string name="compartmentCreated">Nieuw compartiment aangemaakt.</string>
+    <string name="compartmentChanged">Naam compartiment aangepast.</string>
+    <string name="compartmentDeleted">Het compartiment is verwijderd.</string>
+    <string name="cannotDeleteCopmartment">Kan compartiment niet verwijderen als het geheimen bevat.</string>
+    <string name="compartmentNameHint">Voer gewenste naam compartiment in</string>
+    <string name="showSecrets">Geheimen weergeven</string>
+    <string name="sort">Sorteren</string>
+    <string name="deleteSecret"><![CDATA["<b>%s</b> zal worden verwijderd."]]></string>
+    <string name="secretCreated">Nieuw geheim aangemaakt.</string>
+    <string name="secretChanged">Geheim aangepast.</string>
+    <string name="secretDeleted">Geheim verwijderd.</string>
+    <string name="secretTitleHint">Voer naam geheim in</string>
+    <string name="secretBodyHint">Voer geheim in</string>
+    <string name="pictures">Afbeeldingen</string>
+    <string name="noPictures"><![CDATA["Indien je versleutelde afbeeldingen toe wilt voegen, dien je <b>Secret Box+</b> aan te schaffen.<br/><br/>Kijk op <a href="https://play.google.com/store/apps/details?id=com.gnugu.secretboxplus"><b>Secret Box+</b></a> voor meer informatie!"]]></string>
+    <string name="cannotAddPictures">Afbeeldingen kunnen niet aan een geheim zonder titel worden toegevoegd. Maak eerst een titel aan.</string>
+    <string name="nothing_here">Leeg</string>
+    <string name="secret">Geheim</string>
+
+    <string name="about">Over</string>
+    <string name="aboutText"><![CDATA["
+    <h4>Vertalingen</h4>
+    <p>
+    De vertaling van deze applicatie is uitgevoerd door:<br/>
+    </p>
+    <p>
+    Andreas Grunewald (Duits)<br/>Dominique Hazael-Massieux (Frans)<br/>Štefan Števko (Tsjechisch)<br/>Michal Pekarovič (Slowaaks)<br/>Silvia Pascale (Spaans)<br/>Andrey Sitnik (Russisch)<br/>HiAPK.com (中文)<br/>Maarten Hulskemper (Nederlands)
+    </p>
+    "]]></string>
+
+</resources>

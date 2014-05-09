@@ -1,0 +1,50 @@
+<resources>
+    <style name="SecretBox" />
+
+
+    <style name="SecretBox.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/apptheme_color</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/apptheme_color</item>
+    </style>
+
+    <style name="SecretBox.TextAppearance" parent="android:style/TextAppearance">
+        <item name="android:textSize">@dimen/text_size_main</item>
+    </style>
+
+    <style name="SecretBox.TextAppearance.Title">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SecretBox.TextAppearance.Small">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="SecretBox.TextAppearance.Title.Grey">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">@color/grey_transparent</item>
+    </style>
+
+    <style name="SecretBox.TextAppearance.AlertDialog">
+        <item name="android:textColor">@color/apptheme_color</item>
+    </style>
+
+    <style name="SecretBox.AlertDialog">
+    </style>
+
+    <style name="SecretBox.AlertDialog.Title" parent="SecretBox.TextAppearance.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/apptheme_color</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+
+    <style name="SecretBox.AlertDialog.Button" parent="ButtonAppTheme">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/apptheme_color</item>
+    </style>
+
+
+</resources>

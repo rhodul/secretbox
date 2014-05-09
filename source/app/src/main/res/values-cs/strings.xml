@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	<string name="appName">Secret Box</string>
+    <string name="copyrightText"><![CDATA["
+    <h3>© 2009 HERA Consulting Ltd.</h3>
+    Všechna práva vyhrazena.
+    <p>
+    Podmínky používání na www.gnugu.com
+    <br/>
+    Pro podporu kontaktujte support@gnugu.com
+    </p>
+    <p>
+    verze: %s
+    </p>
+    "]]></string>
+	<string name="noMediaCard">Tato aplikace vyžaduje vloženou paměťovou kartu. Prosím vložte paměťovou kartu a spusťte aplikaci znovu.</string>
+	<string name="newPassword">Vložte nové heslo</string>
+	<string name="newPasswordRepeat">Zopakujte nové heslo</string>
+	<string name="newSecretBoxText">Tohle je první použití Secret Boxu nebo chybí datový soubor.\nProsím vytvořte nové heslo.</string>
+	<string name="newSecretBoxTitle">Nový Secret Box</string>
+    <string name="oldPassword">Vložte stávající heslo</string>
+    <string name="changePasswordText">Prosím vložte stávající a nové heslo.</string>
+	<string name="dbCorrupted">Datový soubor je poškozen.\nSmažte ho prosím z paměťové karty a spusťte aplikaci znova.</string>
+	<string name="error">Chyba</string>
+    <string name="delete">Smazat</string>
+	<string name="loginText">Přihlašovací jméno</string>
+	<string name="password">Heslo</string>
+    <string name="changePassword">Změna hesla</string>
+    <string name="passwordChanged">Heslo změněno.</string>
+	<string name="wrongPassword">Chybné heslo. Zkuste znovu.</string>
+    <string name="wrongOldPassword">Stávající heslo je chybné. Zkuste znovu.</string>
+	<string name="secretCount">(%d tajností)</string>
+    <string name="insert">Nová</string>
+    <string name="edit">Změnit</string>
+    <string name="compartmentCreated">Nová složka vytvořena.</string>
+    <string name="compartmentChanged">Název složky změněn.</string>
+    <string name="compartmentDeleted">Složka smazána.</string>
+    <string name="cannotDeleteCopmartment">Nelze smazat složku dokud obsahuje tajnosti.</string>
+    <string name="compartmentNameHint">Vložte název složky</string>
+    <string name="showSecrets">Zobrazit tajnosti</string>
+    <string name="sort">Třídit</string>
+    <string name="deleteSecret"><![CDATA["<b>%s</b> bude smazáno."]]></string>
+    <string name="secretCreated">Vytvořena nová tajnost.</string>
+    <string name="secretChanged">Tajnost změněna.</string>
+    <string name="secretDeleted">Tajnost smazána.</string>
+    <string name="secretTitleHint">Vložte název tajnosti</string>
+    <string name="secretBodyHint">Vložte tajnost</string>
+    <string name="pictures">Obrázky</string>
+    <string name="noPictures"><![CDATA["Pokud chcete mít možnost ukládat do Vašich tajností šifrované obrázky objednejte si prosím <b>Secret Box+</b>.<br/><br/>Navštivte <a href="https://play.google.com/store/apps/details?id=com.gnugu.secretboxplus"><b>Secret Box+</b></a> pro další informace!"]]></string>
+    <string name="secret">Tajnost</string>
+    <string name="cannotAddPictures">Obrázky se nedají přidat bez titulku. Prosím editujte titulek.</string>
+    <string name="nothing_here">Prázdný</string>
+    <string name="about">O aplikaci</string>
+    <string name="aboutText"><![CDATA["
+    <h4>Translation credits</h4>
+    <p>
+    The translation of this application was carried out by:<br/>
+    </p>
+    <p>
+    Andreas Grunewald (German)<br/>Dominique Hazael-Massieux (French)<br/>Štefan Števko (Czech)<br/>Michal Pekarovič (Slovak)<br/>Silvia Pascale (Spanish)<br/>Andrey Sitnik (Russian)<br/>HiAPK.com (中文)<br/>Maarten Hulskemper (Nederlands)
+    </p>
+    "]]></string>
+
+</resources>

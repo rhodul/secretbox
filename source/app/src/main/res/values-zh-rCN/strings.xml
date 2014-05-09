@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	<string name="appName">秘密箱</string>
+    <string name="copyrightText"><![CDATA["
+    <h3>© 2009 HERA Consulting Ltd.</h3>
+    保留所有权利。
+    <p>
+    我们的团队在 www.gnugu.com
+    <br/>
+    寻求支持请联系 support@gnugu.com
+    </p>
+    <p>
+    版本: %s
+    </p>
+    "]]></string>
+	<string name="noMediaCard">应用程序需要可用的存储卡。请插入存储卡并重新启动。</string>
+	<string name="newPassword">输入新密码</string>
+	<string name="newPasswordRepeat">重复新密码</string>
+	<string name="newSecretBoxText">这是Secret Box第一次启动或者数据文件丢失。\n请创建一个新密码。</string>
+	<string name="newSecretBoxTitle">新秘密箱</string>
+    <string name="oldPassword">输入旧密码</string>
+    <string name="changePasswordText">请输入旧密码和新密码。</string>
+	<string name="dbCorrupted">数据库文件已损坏。\n请从存储卡中删除并重新开始。</string>
+	<string name="error">错误</string>
+    <string name="delete">删除</string>
+	<string name="loginText">登陆</string>
+	<string name="password">密码</string>
+    <string name="changePassword">更改密码</string>
+    <string name="passwordChanged">密码已更改。</string>
+	<string name="wrongPassword">密码错误, 请重试。</string>
+    <string name="wrongOldPassword">旧密码错误, 请重试。</string>
+	<string name="secretCount">(%d 个秘密)</string>
+    <string name="insert">新建</string>
+    <string name="edit">编辑</string>
+    <string name="compartmentCreated">新的格箱已创建。</string>
+    <string name="compartmentChanged">格箱名称已更改。</string>
+    <string name="compartmentDeleted">格箱已删除。</string>
+    <string name="cannotDeleteCopmartment">不能删除包含有秘密的格箱。</string>
+    <string name="compartmentNameHint">请输入格箱的名称</string>
+    <string name="showSecrets">显示秘密</string>
+    <string name="sort">排序</string>
+    <string name="deleteSecret"><![CDATA["<b>%s</b> 将被删除。"]]></string>
+    <string name="secretCreated">新秘密已创建。</string>
+    <string name="secretChanged">秘密已更改。</string>
+    <string name="secretDeleted">秘密已删除。</string>
+    <string name="secretTitleHint">输入秘密标题</string>
+    <string name="secretBodyHint">输入秘密</string>
+    <string name="pictures">图片</string>
+    <string name="noPictures"><![CDATA["如果您想添加加密的图片到您的秘密请购买 <b>Secret Box+</b>.<br/><br/>访问 <a href="https://play.google.com/store/apps/details?id=com.gnugu.secretboxplus"><b>Secret Box+</b></a> 查看详情!"]]></string>
+    <string name="cannotAddPictures">图片不能添加没有标题的秘密。请先编辑标题。</string>
+    <string name="nothing_here">空的</string>
+    <string name="secret">秘密</string>
+
+    <string name="about">关于</string>
+    <string name="aboutText"><![CDATA["
+    <h4>翻译致谢</h4>
+    <p>
+    本程序的翻译工作由:<br/>
+    </p>
+    <p>
+    Andreas Grunewald (German)<br/>Dominique Hazael-Massieux (French)<br/>Štefan Števko (Czech)<br/>Michal Pekarovič (Slovak)<br/>Silvia Pascale (Spanish)<br/>Andrey Sitnik (Russian)<br/>HiAPK.com (中文)<br/>Maarten Hulskemper (Nederlands)
+    </p>
+    "]]></string>
+
+</resources>

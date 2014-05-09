@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.gnugu.shoppinglistplus.MainActivity" >
+
+    <group android:id="@+id/compartment_menu"
+        android:visible="false" >
+        <item android:id="@+id/action_new_secret"
+            android:icon="@drawable/ic_action_new"
+            android:title="@string/insert"
+            app:showAsAction="ifRoom" />
+        <item android:id="@+id/action_edit_compartment"
+            android:icon="@drawable/ic_action_edit"
+            android:title="@string/edit"
+            app:showAsAction="ifRoom" />
+        <item android:id="@+id/action_delete_compartment"
+            android:icon="@drawable/ic_action_discard"
+            android:title="@string/delete"
+            app:showAsAction="ifRoom" />
+    </group>
+    <item android:id="@+id/action_about"
+        android:title="@string/about"
+        android:icon="@drawable/ic_action_about"
+        app:showAsAction="never" />
+</menu>
