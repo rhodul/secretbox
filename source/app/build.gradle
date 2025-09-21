@@ -1,28 +1,35 @@
-apply plugin: 'android'
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.3"
+    namespace "com.gnugu.secretbox"
+    compileSdk 34
 
     defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 19
+        minSdk 21
+        targetSdk 34
         versionCode 2001
         versionName "2.0.01"
     }
     buildTypes {
         release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    lintOptions {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lint {
         abortOnError false
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:19.1.0'
-    compile 'com.android.support:support-v4:19.1.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0' // Or the latest stable version
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

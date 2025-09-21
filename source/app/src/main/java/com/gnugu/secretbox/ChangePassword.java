@@ -7,7 +7,7 @@ package com.gnugu.secretbox;
 import javax.crypto.BadPaddingException;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import androidx.appcompat.app.AppCompatActivity; // Corrected import
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MenuItem;
@@ -26,7 +26,7 @@ import com.gnugu.secretbox.NewPassword.OnPasswordEditedListener;
  * @author HERA Consulting Ltd.
  * 
  */
-public final class ChangePassword extends ActionBarActivity {
+public final class ChangePassword extends AppCompatActivity { // Corrected base class
 	Button _ok;
 	NewPassword _newPwd;
 	EditText _oldPwd;
@@ -49,6 +49,7 @@ public final class ChangePassword extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				try {
+					// ChangePassword.this is an AppCompatActivity, which is a FragmentActivity
 					DataAdapter adapter = ((Application) ChangePassword.this
 							.getApplication()).getDataAdapter(ChangePassword.this);
 					if (adapter != null) {
@@ -89,11 +90,10 @@ public final class ChangePassword extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.setResult(RESULT_CANCELED);
-                this.finish();
-                return true;
+        if (item.getItemId() == android.R.id.home) { // Changed from switch to if
+            this.setResult(RESULT_CANCELED);
+            this.finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.fragment.app.Fragment;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar; // Added Toolbar import
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -108,18 +109,16 @@ public class NavigationDrawerFragment extends Fragment {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
             mFromSavedInstanceState = true;
         }
-
-        // Select either the default item (0) or the last selected item.
-        selectItem(mCurrentSelectedPosition);
     }
 
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(true);
-
         getAdapter();
+        if (mFromSavedInstanceState || mCurrentSelectedPosition != 0) {
+             selectItem(mCurrentSelectedPosition);
+        }
     }
 
     @Override
@@ -134,18 +133,13 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
 
-        // setup the ListView adapter (will be populated in fillData())
-        // map cursor fields to list item
         String[] from = new String[] { DataAdapter.Compartment.NAME,
                 DataAdapter.Compartment.SECRET_COUNT };
         int[] to = new int[] { R.id.line1, R.id.line2 };
-        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this.getActivity(),
-                R.layout.list_item, null, from, to);
-        // set our custom view binder
+        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(requireActivity(),
+                R.layout.list_item, null, from, to, 0);
         cursorAdapter.setViewBinder(new CompartmentViewBinder());
         mCompartmentListView.setAdapter(cursorAdapter);
-
-
         mCompartmentListView.setItemChecked(mCurrentSelectedPosition, true);
 
         mNewCompartmentName = (EditText) mRoot.findViewById(R.id.new_compartment_name);
@@ -170,25 +164,20 @@ public class NavigationDrawerFragment extends Fragment {
      *
      * @param fragmentId   The android:id of this fragment in its activity's layout.
      * @param drawerLayout The DrawerLayout containing this fragment's UI.
+     * @param toolbar      The Toolbar from the host Activity.
      */
-    public void setUp(int fragmentId, DrawerLayout drawerLayout) {
-        mFragmentContainerView = getActivity().findViewById(fragmentId);
+    public void setUp(int fragmentId, DrawerLayout drawerLayout, Toolbar toolbar) { // Added toolbar parameter
+        mFragmentContainerView = requireActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
 
-        // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-        // set up the drawer's list view with items and click listener
-
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the navigation drawer and the action bar app icon.
         mDrawerToggle = new ActionBarDrawerToggle(
-                getActivity(),                    /* host Activity */
+                requireActivity(),                    /* host Activity */
                 mDrawerLayout,                    /* DrawerLayout object */
-                R.drawable.ic_drawer,             /* nav drawer image to replace 'Up' caret */
+                toolbar,                          /* Toolbar */
                 R.string.navigation_drawer_open,  /* "open drawer" description for accessibility */
                 R.string.navigation_drawer_close  /* "close drawer" description for accessibility */
         ) {
@@ -198,8 +187,7 @@ public class NavigationDrawerFragment extends Fragment {
                 if (!isAdded()) {
                     return;
                 }
-
-                getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+                requireActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
             }
 
             @Override
@@ -208,14 +196,10 @@ public class NavigationDrawerFragment extends Fragment {
                 if (!isAdded()) {
                     return;
                 }
-
-                getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+                requireActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
             }
         };
 
-        mDrawerLayout.openDrawer(mFragmentContainerView);
-
-        // Defer code dependent on restoration of previous instance state.
         mDrawerLayout.post(new Runnable() {
             @Override
             public void run() {
@@ -223,7 +207,7 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
 
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
 
     private void selectItem(int position) {
@@ -231,15 +215,19 @@ public class NavigationDrawerFragment extends Fragment {
         if (mCompartmentListView != null) {
             mCompartmentListView.setItemChecked(position, true);
             if (mCallbacks != null) {
-                // get compartment id and name
-                if (mCompartmentListView != null) {
+                if (mCompartmentListView.getAdapter() instanceof SimpleCursorAdapter) {
                     SimpleCursorAdapter cursorAdapter = (SimpleCursorAdapter) mCompartmentListView.getAdapter();
                     Cursor cursor = cursorAdapter.getCursor();
-                    if (cursor != null) {
-                        cursor.moveToPosition(position);
-                        long id = cursor.getLong(cursor.getColumnIndex(DataAdapter.Compartment._ID));
-                        String name = cursor.getString(cursor.getColumnIndex(DataAdapter.Compartment.NAME));
-                        mCallbacks.onNavigationDrawerItemSelected(id, mAdapter.decrypt(name));
+                    if (cursor != null && cursor.moveToPosition(position)) {
+                        int idColumnIndex = cursor.getColumnIndex(DataAdapter.Compartment._ID);
+                        int nameColumnIndex = cursor.getColumnIndex(DataAdapter.Compartment.NAME);
+                        if (idColumnIndex != -1 && nameColumnIndex != -1) {
+                            long id = cursor.getLong(idColumnIndex);
+                            String name = cursor.getString(nameColumnIndex);
+                            mCallbacks.onNavigationDrawerItemSelected(id, mAdapter.decrypt(name));
+                        } else {
+                            // Log error or handle missing columns
+                        }
                     }
                 }
             }
@@ -255,7 +243,8 @@ public class NavigationDrawerFragment extends Fragment {
         try {
             mCallbacks = (NavigationDrawerCallbacks) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
+            throw new ClassCastException(activity.toString()
+                    + " must implement NavigationDrawerCallbacks");
         }
     }
 
@@ -274,14 +263,13 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        // Forward the new configuration the drawer toggle component.
-        mDrawerToggle.onConfigurationChanged(newConfig);
+        if (mDrawerToggle != null) {
+            mDrawerToggle.onConfigurationChanged(newConfig);
+        }
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // If the drawer is open, show the drawer app actions in the action bar. See also
-        // showGlobalContextActionBar, which controls the top-left area of the action bar.
         if (mDrawerLayout != null && isDrawerOpen()) {
             inflater.inflate(R.menu.drawer, menu);
             showGlobalContextActionBar();
@@ -291,12 +279,12 @@ public class NavigationDrawerFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
+        if (mDrawerToggle != null && mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
 
         if (item.getItemId() == R.id.action_change_password) {
-            startActivity(new Intent(this.getActivity(), ChangePassword.class));
+            startActivity(new Intent(requireActivity(), ChangePassword.class));
             return true;
         }
 
@@ -304,13 +292,15 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     private void getAdapter() {
-        MainActivity activity = (MainActivity) this.getActivity();
-        Application application = (Application) activity.getApplication();
-        mAdapter = application.getDataAdapter(activity);
+        if (getActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) getActivity();
+            Application application = (Application) activity.getApplication();
+            mAdapter = application.getDataAdapter(activity);
+        }
     }
 
     public void openDrawer() {
-        if (mDrawerLayout != null) {
+        if (mDrawerLayout != null && mFragmentContainerView != null) {
             mDrawerLayout.openDrawer(mFragmentContainerView);
         }
     }
@@ -319,59 +309,54 @@ public class NavigationDrawerFragment extends Fragment {
         if (mAdapter == null) {
             getAdapter();
         }
-
-        SimpleCursorAdapter cursorAdapter = (SimpleCursorAdapter) mCompartmentListView.getAdapter();
-
-        // get old cursor
-        Cursor cursor = cursorAdapter.getCursor();
-
-        if (cursor != null) {
-            // if cursor is there simply re-query
-            cursor.requery();
-        } else {
-            // need for new cursor
-            cursor = mAdapter.getCompartments();
-            this.getActivity().startManagingCursor(cursor);
-            cursorAdapter.changeCursor(cursor);
+        if (mAdapter == null) {
+            return;
         }
 
-        // make the "no items" text visible
-        if (cursor.getCount() == 0) {
-            mCompartmentListView.setVisibility(View.GONE);
-            mRoot.findViewById(R.id.nothing).setVisibility(View.VISIBLE);
-        } else {
-            mCompartmentListView.setVisibility(View.VISIBLE);
-            mRoot.findViewById(R.id.nothing).setVisibility(View.GONE);
+        if (mCompartmentListView.getAdapter() instanceof SimpleCursorAdapter) {
+            SimpleCursorAdapter cursorAdapter = (SimpleCursorAdapter) mCompartmentListView.getAdapter();
+            Cursor newCursor = mAdapter.getCompartments();
+            cursorAdapter.changeCursor(newCursor);
+
+            if (newCursor == null || newCursor.getCount() == 0) {
+                mCompartmentListView.setVisibility(View.GONE);
+                mRoot.findViewById(R.id.nothing).setVisibility(View.VISIBLE);
+            } else {
+                mCompartmentListView.setVisibility(View.VISIBLE);
+                mRoot.findViewById(R.id.nothing).setVisibility(View.GONE);
+            }
         }
     }
 
-    /**
-     * Per the navigation drawer design guidelines, updates the action bar to show the drawer app
-     * 'context', rather than just what's in the current screen.
-     */
     private void showGlobalContextActionBar() {
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setTitle(R.string.appName);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle(R.string.appName);
+        }
     }
 
-    private ActionBar getActionBar() {
-        return ((ActionBarActivity) getActivity()).getSupportActionBar();
+    private ActionBar getSupportActionBar() {
+        if (getActivity() instanceof AppCompatActivity) {
+            return ((AppCompatActivity) getActivity()).getSupportActionBar();
+        }
+        return null;
     }
 
     private void createCompartment() {
         if (mNewCompartmentName.getText().length() == 0) {
             return;
         }
-
-        mAdapter.createCompartment(mNewCompartmentName.getText().toString());
-        mNewCompartmentName.setText(null);
-        Toast.makeText(this.getActivity(), R.string.compartmentCreated,
+        if (mAdapter != null) {
+             mAdapter.createCompartment(mNewCompartmentName.getText().toString());
+             mNewCompartmentName.setText(null);
+             Toast.makeText(requireActivity(), R.string.compartmentCreated,
                 Toast.LENGTH_SHORT).show();
-
-        // new compartment, so refresh data
-        this.fillData();
+             this.fillData();
+        } else {
+            // Handle case where mAdapter is null, maybe show a Toast
+            Toast.makeText(requireActivity(), "Error: Adapter not initialized", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**

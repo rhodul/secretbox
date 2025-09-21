@@ -1,35 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!-- Generated with http://android-holo-colors.com -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <style name="AppTheme" parent="@style/_AppTheme"></style>
-
-    <style name="_AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-
-        <item name="actionBarStyle">@style/SecretBox.ActionBar</item>
-        <item name="actionBarTabStyle">@style/TabAppTheme</item>
-        <item name="actionBarTabBarStyle">@style/TabBarAppTheme</item>
-        <item name="actionBarTabTextStyle">@style/TabTextAppTheme</item>
-        <item name="android:editTextStyle">@style/EditTextAppTheme</item>
-        <item name="android:textViewStyle">@style/SecretBox.TextAppearance</item>
-
-
-        <item name="android:textColorHighlight">#99be4c2a</item>
-
-        <item name="android:buttonStyle">@style/ButtonAppTheme</item>
-
-        <item name="android:imageButtonStyle">@style/ImageButtonAppTheme</item>
-
-        <item name="android:progressBarStyleHorizontal">@style/ProgressBarAppTheme</item>
-
-        <item name="android:listViewStyle">@style/ListViewAppTheme</item>
-
-        <item name="android:listViewWhiteStyle">@style/ListViewAppTheme.White</item>
-
-        <item name="android:gridViewStyle">@style/GridViewAppTheme</item>
-
-        <item name="android:spinnerItemStyle">@style/SpinnerItemAppTheme</item>
-
-    </style>
+    <!--
+        AppTheme and _AppTheme definitions were moved to styles.xml to resolve duplication
+        and to ensure a NoActionBar theme is used for compatibility with Toolbar.
+    -->
 </resources>

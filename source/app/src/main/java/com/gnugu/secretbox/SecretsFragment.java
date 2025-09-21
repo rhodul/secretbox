@@ -3,7 +3,7 @@ package com.gnugu.secretbox;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment; // Corrected import
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,7 +89,8 @@ public class SecretsFragment extends Fragment
         try {
             mCallbacks = (SecretsFragmentCallbacks) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
+            throw new ClassCastException(activity.toString()
+                    + " must implement SecretsFragmentCallbacks");
         }
     }
 
@@ -112,15 +113,17 @@ public class SecretsFragment extends Fragment
             }
         });
 
-        mComopartmentId = getArguments().getLong(ARG_COMPARTMENT_ID);
+        if (getArguments() != null) {
+            mComopartmentId = getArguments().getLong(ARG_COMPARTMENT_ID);
+        }
 
         // setup the ListView adapter (will be populated in fillData())
         // map cursor fields to list item
-        // (_ID is there for the picture count)
         String[] from = new String[] { DataAdapter.Secret.TITLE };
         int[] to = new int[] { R.id.line1 };
-        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this.getActivity(),
-                R.layout.list_item_simple, null, from, to);
+        // Assuming SimpleCursorAdapter is android.widget.SimpleCursorAdapter
+        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(requireActivity(),
+                R.layout.list_item_simple, null, from, to, 0);
         // set our custom view binder
         cursorAdapter.setViewBinder(new SecretViewBinder());
         mSecretsListView.setAdapter(cursorAdapter);
@@ -130,43 +133,35 @@ public class SecretsFragment extends Fragment
     }
 
     private void getAdapter() {
-        MainActivity activity = (MainActivity) this.getActivity();
-        Application application = (Application) activity.getApplication();
-        mAdapter = application.getDataAdapter(activity);
+        if (getActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) getActivity();
+            Application application = (Application) activity.getApplication();
+            // Ensure the correct parentActivity (FragmentActivity) is passed if getDataAdapter expects it
+            mAdapter = application.getDataAdapter(activity);
+        }
     }
 
     public void fillData() {
         if (mAdapter == null) {
             getAdapter();
         }
-        // if still nothing it means we fired up Login activity, so let our mother
-        // activity to get back to us
         if (mAdapter == null) {
-            return;
+            return; // Adapter could not be initialized
         }
 
-        SimpleCursorAdapter cursorAdapter = (SimpleCursorAdapter) mSecretsListView.getAdapter();
+        if (mSecretsListView.getAdapter() instanceof SimpleCursorAdapter) {
+            SimpleCursorAdapter cursorAdapter = (SimpleCursorAdapter) mSecretsListView.getAdapter();
+            Cursor newCursor = mAdapter.getSecrets(mComopartmentId);
+            cursorAdapter.changeCursor(newCursor); // Replaces requery and startManagingCursor
 
-        // get old cursor
-        Cursor cursor = cursorAdapter.getCursor();
-
-        if (cursor != null) {
-            // if cursor is there simply re-query
-            cursor.requery();
-        } else {
-            // need for new cursor
-            cursor = mAdapter.getSecrets(mComopartmentId);
-            this.getActivity().startManagingCursor(cursor);
-            cursorAdapter.changeCursor(cursor);
-        }
-
-        // make the "no items" text visible
-        if (cursor.getCount() == 0) {
-            mSecretsListView.setVisibility(View.GONE);
-            mRoot.findViewById(R.id.nothing).setVisibility(View.VISIBLE);
-        } else {
-            mSecretsListView.setVisibility(View.VISIBLE);
-            mRoot.findViewById(R.id.nothing).setVisibility(View.GONE);
+            // make the "no items" text visible
+            if (newCursor == null || newCursor.getCount() == 0) {
+                mSecretsListView.setVisibility(View.GONE);
+                mRoot.findViewById(R.id.nothing).setVisibility(View.VISIBLE);
+            } else {
+                mSecretsListView.setVisibility(View.VISIBLE);
+                mRoot.findViewById(R.id.nothing).setVisibility(View.GONE);
+            }
         }
     }
 
@@ -174,14 +169,17 @@ public class SecretsFragment extends Fragment
         if (mSecretsListView != null) {
             mSecretsListView.setItemChecked(position, true);
             if (mCallbacks != null) {
-                // get compartment id and name
-                if (mSecretsListView != null) {
+                if (mSecretsListView.getAdapter() instanceof SimpleCursorAdapter) {
                     SimpleCursorAdapter cursorAdapter = (SimpleCursorAdapter) mSecretsListView.getAdapter();
                     Cursor cursor = cursorAdapter.getCursor();
-                    if (cursor != null) {
-                        cursor.moveToPosition(position);
-                        long id = cursor.getLong(cursor.getColumnIndex(DataAdapter.Secret._ID));
-                        mCallbacks.onSecretSelected(id);
+                    if (cursor != null && cursor.moveToPosition(position)) {
+                        int idColumnIndex = cursor.getColumnIndex(DataAdapter.Secret._ID);
+                        if (idColumnIndex != -1) {
+                            long id = cursor.getLong(idColumnIndex);
+                            mCallbacks.onSecretSelected(id);
+                        } else {
+                            // Log error or handle missing column
+                        }
                     }
                 }
             }

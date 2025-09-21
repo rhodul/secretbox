@@ -4,14 +4,14 @@ import java.util.Locale;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.appcompat.app.AppCompatActivity; // Corrected import
+import androidx.appcompat.app.ActionBar; // Corrected import
+import androidx.fragment.app.Fragment; // Corrected import
+import androidx.fragment.app.FragmentManager; // Corrected import
+import androidx.fragment.app.FragmentTransaction; // Corrected import
+import androidx.fragment.app.FragmentPagerAdapter; // Corrected import
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager; // Corrected import
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -20,7 +20,7 @@ import android.view.View;
 import android.widget.Toast;
 
 
-public class SecretEditorActivity extends ActionBarActivity implements ActionBar.TabListener {
+public class SecretEditorActivity extends AppCompatActivity implements ActionBar.TabListener {
 
     public static final String ARG_COMPARTMENT_ID = "compartment_id";
     public static final String ARG_SECRET_ID = "secret_id";
@@ -28,12 +28,12 @@ public class SecretEditorActivity extends ActionBarActivity implements ActionBar
 
 
     /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
+     * The {@link androidx.viewpager.widget.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
      * {@link FragmentPagerAdapter} derivative, which will keep every
      * loaded fragment in memory. If this becomes too memory intensive, it
      * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     * {@link androidx.fragment.app.FragmentStatePagerAdapter}.
      */
     private TabsPagerAdapter mTabsPagerAdapter;
 
@@ -62,11 +62,12 @@ public class SecretEditorActivity extends ActionBarActivity implements ActionBar
         mSecretId = intent.getLongExtra(ARG_SECRET_ID, -1);
 
         Application application = (Application) getApplication();
+        // SecretEditorActivity is an AppCompatActivity, which is a FragmentActivity
         mAdapter = application.getDataAdapter(this);
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        // actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS); // Deprecated
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -79,24 +80,29 @@ public class SecretEditorActivity extends ActionBarActivity implements ActionBar
         // When swiping between different sections, select the corresponding
         // tab. We can also use ActionBar.Tab#select() to do this if we have
         // a reference to the Tab.
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() { // Use addOnPageChangeListener for ViewPager
             @Override
             public void onPageSelected(int position) {
-                actionBar.setSelectedNavigationItem(position);
+                if (actionBar != null) {
+                    // actionBar.setSelectedNavigationItem(position); // Related to deprecated NAVIGATION_MODE_TABS
+                    // If using TabLayout, you would update it here: tabLayout.getTabAt(position).select();
+                }
             }
         });
 
         // For each of the sections in the app, add a tab to the action bar.
-        for (int i = 0; i < mTabsPagerAdapter.getCount(); i++) {
-            // Create a tab with text corresponding to the page title defined by
-            // the adapter. Also specify this Activity object, which implements
-            // the TabListener interface, as the callback (listener) for when
-            // this tab is selected.
-            actionBar.addTab(
-                    actionBar.newTab()
-                            .setText(mTabsPagerAdapter.getPageTitle(i))
-                            .setTabListener(this));
+        // This loop is related to the deprecated NAVIGATION_MODE_TABS
+        // If using TabLayout, tabs are typically defined in XML or added to the TabLayout directly.
+        /*
+        if (actionBar != null) {
+            for (int i = 0; i < mTabsPagerAdapter.getCount(); i++) {
+                actionBar.addTab(
+                        actionBar.newTab()
+                                .setText(mTabsPagerAdapter.getPageTitle(i))
+                                .setTabListener(this));
+            }
         }
+        */
     }
 
 
@@ -117,32 +123,32 @@ public class SecretEditorActivity extends ActionBarActivity implements ActionBar
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-            case R.id.action_cancel:
-                this.setResult(RESULT_CANCELED);
-                this.finish();
-                return true;
-            case R.id.action_done:
-                writeSecret();
-                this.setResult(RESULT_OK);
-                this.finish();
-                return true;
-            case R.id.action_delete_secret:
-                deleteSecret();
-                return true;
-            case R.id.action_edit_secret:
-                setEditMode(true);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home || itemId == R.id.action_cancel) {
+            this.setResult(RESULT_CANCELED);
+            this.finish();
+            return true;
+        } else if (itemId == R.id.action_done) {
+            writeSecret();
+            this.setResult(RESULT_OK);
+            this.finish();
+            return true;
+        } else if (itemId == R.id.action_delete_secret) {
+            deleteSecret();
+            return true;
+        } else if (itemId == R.id.action_edit_secret) {
+            setEditMode(true);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setEditMode(boolean editMode) {
         mEditMode = editMode;
-        supportInvalidateOptionsMenu();
-        mEditorFragment.setEditMode(mEditMode);
+        invalidateOptionsMenu(); // Corrected API call
+        if (mEditorFragment != null) { // Check if fragment exists
+            mEditorFragment.setEditMode(mEditMode);
+        }
     }
 
     @Override
@@ -152,7 +158,7 @@ public class SecretEditorActivity extends ActionBarActivity implements ActionBar
         mViewPager.setCurrentItem(tab.getPosition());
         // also if in edit mode, change menus between tabs
         if (mEditMode) {
-            supportInvalidateOptionsMenu();
+            invalidateOptionsMenu(); // Corrected API call
         }
     }
 
@@ -182,7 +188,7 @@ public class SecretEditorActivity extends ActionBarActivity implements ActionBar
     public class TabsPagerAdapter extends FragmentPagerAdapter {
 
         public TabsPagerAdapter(FragmentManager fm) {
-            super(fm);
+            super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT); // Added behavior for modern FragmentPagerAdapter
         }
 
         @Override
@@ -191,17 +197,24 @@ public class SecretEditorActivity extends ActionBarActivity implements ActionBar
                 if (mEditorFragment == null) {
                     String title = null;
                     String body = null;
-                    if (mSecretId != -1) {
+                    if (mSecretId != -1 && mAdapter != null) { // Check mAdapter for null
                         Cursor c = mAdapter.getSecret(mSecretId);
-                        String encryptedTitle = c.getString(c
-                                .getColumnIndex(DataAdapter.Secret.TITLE));
-                        String encryptedBody = c.getString(c
-                                .getColumnIndex(DataAdapter.Secret.BODY));
-                        c.close();
-                        title = mAdapter.decrypt(encryptedTitle);
-                        body = mAdapter.decrypt(encryptedBody);
+                        if (c != null) { // Check cursor for null
+                             if (c.moveToFirst()) { // Ensure cursor has data
+                                int titleColIndex = c.getColumnIndex(DataAdapter.Secret.TITLE);
+                                int bodyColIndex = c.getColumnIndex(DataAdapter.Secret.BODY);
+                                if (titleColIndex != -1) {
+                                    String encryptedTitle = c.getString(titleColIndex);
+                                    title = mAdapter.decrypt(encryptedTitle);
+                                }
+                                if (bodyColIndex != -1) {
+                                    String encryptedBody = c.getString(bodyColIndex);
+                                    body = mAdapter.decrypt(encryptedBody);
+                                }
+                            }
+                            c.close();
+                        }
                     }
-
                     mEditorFragment = new SecretEditorFragment(title, body, mEditMode);
                 }
                 return mEditorFragment;
@@ -255,12 +268,20 @@ public class SecretEditorActivity extends ActionBarActivity implements ActionBar
     }
 
     private void deleteSecret() {
+        if (mAdapter == null) return; // Guard against null adapter
         // get secret title
         Cursor cursor = mAdapter.getSecret(mSecretId);
-        String encryptedTitle = cursor.getString(cursor
-                .getColumnIndex(DataAdapter.Secret.TITLE));
-        cursor.close();
-        String secretTitle = mAdapter.decrypt(encryptedTitle);
+        String secretTitle = "";
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                int titleColIndex = cursor.getColumnIndex(DataAdapter.Secret.TITLE);
+                if (titleColIndex != -1) {
+                    String encryptedTitle = cursor.getString(titleColIndex);
+                    secretTitle = mAdapter.decrypt(encryptedTitle);
+                }
+            }
+            cursor.close();
+        }
 
         // this is only defined so the anonymous OnClickHandler
         // can see it
@@ -269,19 +290,27 @@ public class SecretEditorActivity extends ActionBarActivity implements ActionBar
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAdapter.deleteSecret(secretToDelete);
-
-                Toast.makeText(SecretEditorActivity.this, R.string.secretDeleted,
-                        Toast.LENGTH_SHORT).show();
-                setResult(RESULT_OK);
-                finish();
+                if (mAdapter != null) { // Check adapter again in case it was nullified
+                    mAdapter.deleteSecret(secretToDelete);
+                    Toast.makeText(SecretEditorActivity.this, R.string.secretDeleted,
+                            Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_OK);
+                    finish();
+                }
             }
         };
+        
+        CharSequence message;
+        String alertMessageString = this.getString(R.string.deleteSecret, TextUtils.htmlEncode(secretTitle));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            message = Html.fromHtml(alertMessageString, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            message = Html.fromHtml(alertMessageString);
+        }
 
         Utilities.showYesNoAlertDialog(this,
                 this.getString(R.string.delete) + "?",
-                Html.fromHtml(this.getString(R.string.deleteSecret, TextUtils
-                        .htmlEncode(secretTitle))),
+                message,
                 onClickListener,
                 null
         );

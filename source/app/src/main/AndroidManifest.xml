@@ -2,14 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gnugu.secretbox" >
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Removed WRITE_EXTERNAL_STORAGE permission -->
 
     <application
         android:name="com.gnugu.secretbox.Application"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/appName"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme" > <!-- AppTheme applied to the whole application -->
 
         <!--
             android:configChanges is there to prevent the system form creating
@@ -18,7 +18,8 @@
         <activity
             android:name="com.gnugu.secretbox.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:label="@string/appName" >
+            android:label="@string/appName"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +31,8 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:icon="@drawable/ic_action_sbox"
             android:label="@string/about"
-            android:parentActivityName="com.gnugu.secretbox.MainActivity" >
+            android:parentActivityName="com.gnugu.secretbox.MainActivity"
+            android:exported="false" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gnugu.secretbox.MainActivity" />
@@ -40,7 +42,8 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:icon="@drawable/ic_action_sbox"
             android:label="@string/newSecretBoxTitle"
-            android:parentActivityName="com.gnugu.secretbox.MainActivity" >
+            android:parentActivityName="com.gnugu.secretbox.MainActivity"
+            android:exported="false" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gnugu.secretbox.MainActivity" />
@@ -50,7 +53,8 @@
             android:icon="@drawable/ic_action_sbox"
             android:label="@string/edit"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:parentActivityName="com.gnugu.secretbox.MainActivity" >
+            android:parentActivityName="com.gnugu.secretbox.MainActivity"
+            android:exported="false" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gnugu.secretbox.MainActivity" />
@@ -60,7 +64,8 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:icon="@drawable/ic_action_sbox"
             android:label="@string/changePassword"
-            android:parentActivityName="com.gnugu.secretbox.MainActivity" >
+            android:parentActivityName="com.gnugu.secretbox.MainActivity"
+            android:exported="false" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gnugu.secretbox.MainActivity" />
@@ -71,7 +76,8 @@
             android:icon="@drawable/ic_action_sbox"
             android:label="@string/loginText"
             android:parentActivityName="com.gnugu.secretbox.MainActivity"
-            android:windowSoftInputMode="adjustResize|stateVisible" >
+            android:windowSoftInputMode="adjustResize|stateVisible"
+            android:exported="false" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gnugu.secretbox.MainActivity" />
@@ -81,7 +87,8 @@
             android:icon="@drawable/ic_action_sbox"
             android:label="@string/secret"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:parentActivityName="com.gnugu.secretbox.MainActivity" >
+            android:parentActivityName="com.gnugu.secretbox.MainActivity"
+            android:exported="false" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gnugu.secretbox.MainActivity" />

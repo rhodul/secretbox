@@ -11,7 +11,7 @@ import javax.crypto.BadPaddingException;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import androidx.appcompat.app.AppCompatActivity; // Corrected import
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +27,7 @@ import com.gnugu.secretbox.NewPassword.OnPasswordEditedListener;
  * @author HERA Consulting Ltd.
  * 
  */
-public final class NewSecretBoxActivity extends ActionBarActivity {
+public final class NewSecretBoxActivity extends AppCompatActivity { // Corrected base class
 	Button _ok;
 	NewPassword _newPwd;
 	
@@ -50,7 +50,7 @@ public final class NewSecretBoxActivity extends ActionBarActivity {
 				String password = (String) _newPwd.getPassword(); 
 				// create new DB
 				try {
-					DataAdapter.createDatabase(password);
+					DataAdapter.createDatabase(NewSecretBoxActivity.this, password);
 				} catch (IOException e) {
 					Log.e(this.getClass().getName(), Log.getStackTraceString(e));
 					throw new RuntimeException(e);
@@ -58,7 +58,7 @@ public final class NewSecretBoxActivity extends ActionBarActivity {
 				// also instantiate the object
 				Application app = (Application) NewSecretBoxActivity.this.getApplication();
 				try {
-					app.setDataAdapter(new DataAdapter(password));
+					app.setDataAdapter(new DataAdapter(NewSecretBoxActivity.this, password));
 				} catch (BadPaddingException e) {
 					Log.e(this.getClass().getName(), Log.getStackTraceString(e));
 					throw new RuntimeException(e);

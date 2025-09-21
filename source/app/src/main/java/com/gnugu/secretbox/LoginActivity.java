@@ -2,7 +2,7 @@ package com.gnugu.secretbox;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import androidx.appcompat.app.AppCompatActivity; // Corrected import
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -24,7 +24,7 @@ import javax.crypto.BadPaddingException;
  * A login screen that offers login via email/password.
 
  */
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends AppCompatActivity { // Corrected base class
 
 
     /**
@@ -82,11 +82,10 @@ public class LoginActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.setResult(RESULT_CANCELED);
-                this.finish();
-                return true;
+        if (item.getItemId() == android.R.id.home) { // Changed from switch to if
+            this.setResult(RESULT_CANCELED);
+            this.finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -100,7 +99,8 @@ public class LoginActivity extends ActionBarActivity {
         try {
             Application app = (Application) this.getApplication();
             if (app != null) {
-                app.setDataAdapter(new DataAdapter(
+                // LoginActivity.this is an AppCompatActivity, which is a FragmentActivity
+                app.setDataAdapter(new DataAdapter(LoginActivity.this,
                         mPassword.getText().toString()));
                 this.setResult(RESULT_OK, new Intent());
                 this.finish();

@@ -1,10 +1,24 @@
-<resources>
-    <style name="SecretBox" />
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- android: prefixed versions should be sufficient with a NoActionBar parent -->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
 
+        <!-- Core color attributes for Toolbar and other components -->
+        <item name="colorPrimary">@color/apptheme_color</item>
+        <item name="colorPrimaryVariant">@color/apptheme_color</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <!-- Your existing styles below -->
+    <style name="SecretBox" />
 
     <style name="SecretBox.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/apptheme_color</item>
-
         <!-- Support library compatibility -->
         <item name="background">@color/apptheme_color</item>
     </style>
@@ -40,11 +54,9 @@
         <item name="android:padding">10dp</item>
     </style>
 
-
-    <style name="SecretBox.AlertDialog.Button" parent="ButtonAppTheme">
-        <item name="android:background">@android:color/transparent</item>
+    <style name="SecretBox.AlertDialog.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <!-- <item name="android:background">@android:color/transparent</item> DON'T NEED with TextButton -->
         <item name="android:textColor">@color/apptheme_color</item>
     </style>
-
 
 </resources>

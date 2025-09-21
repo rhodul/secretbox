@@ -1,7 +1,7 @@
 package com.gnugu.secretbox;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment; // Corrected import
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

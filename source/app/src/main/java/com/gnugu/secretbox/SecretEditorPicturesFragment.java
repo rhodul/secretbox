@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment; // Corrected import
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -41,7 +41,13 @@ public class SecretEditorPicturesFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_secret_editor_pictures, container, false);
 
         TextView text = (TextView) rootView.findViewById(R.id.text);
-        text.setText(Html.fromHtml(this.getString(R.string.noPictures)));
+        // Html.fromHtml(String) is deprecated in API 24. For now, keeping original logic.
+        // Modern usage: Html.fromHtml(getString(R.string.noPictures), Html.FROM_HTML_MODE_LEGACY)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            text.setText(Html.fromHtml(this.getString(R.string.noPictures), Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            text.setText(Html.fromHtml(this.getString(R.string.noPictures)));
+        }
         text.setMovementMethod(LinkMovementMethod.getInstance());
 
         return rootView;
