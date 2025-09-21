@@ -22,8 +22,28 @@
         <item name="colorControlNormal">@color/white</item> <!-- Project-defined white -->
         <item name="android:textColorSecondary">@color/white</item> <!-- Project-defined white, also influences icon colors -->
 
+        <!-- Default hint text color for basic EditText (TextInputLayout has its own) -->
+        <item name="android:textColorHint">@color/grey_transparent</item>
+
         <!-- Custom AlertDialog Theme -->
         <item name="materialAlertDialogTheme">@style/AppTheme.MaterialAlertDialog</item>
+
+        <!-- Default TextInputLayout style -->
+        <item name="textInputStyle">@style/AppTheme.TextInputLayout.OutlinedBox</item>
+    </style>
+
+    <!-- Toolbar Title Text Appearance (kept for potential direct use, but overlay is preferred) -->
+    <style name="AppTheme.Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Specific Toolbar Overlay Theme -->
+    <style name="AppTheme.ToolbarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!-- This theme forces dark (e.g., brown) toolbar with light (e.g., white) text -->
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="titleTextColor">@color/white</item> <!-- More specific for title -->
     </style>
 
     <!-- Custom AlertDialog Theme -->
@@ -43,6 +63,18 @@
 
     <style name="AppTheme.AlertDialog.Button" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/apptheme_color</item>
+    </style>
+
+    <!-- TextInputLayout Styles -->
+    <style name="AppTheme.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextAppearance">@style/AppTheme.TextInputLayout.HintText.Outlined</item>
+        <item name="boxStrokeColor">@color/apptheme_color</item> <!-- Outline color when focused -->
+        <item name="android:textColorHint">@color/grey_transparent</item> <!-- Default hint color (unfocused, non-floating) -->
+    </style>
+
+    <style name="AppTheme.TextInputLayout.HintText.Outlined" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/grey_transparent</item> <!-- Color of the floating hint when text is entered/focused -->
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!-- Fullscreen Theme (remains as is, if used) -->

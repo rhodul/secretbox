@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="0dp"
-    android:background="@android:color/white"
-    tools:context="com.gnugu.shoppinglistplus.NavigationDrawerFragment" >
+    android:background="@android:color/white" >
 
     <LinearLayout
         android:orientation="horizontal"
@@ -17,16 +17,20 @@
         android:paddingStart="0dp"
         android:showDividers="none">
 
-        <EditText
-            android:id="@+id/new_compartment_name"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/compartmentNameHint"
-            android:singleLine="true"
-            android:ellipsize="end"
             android:layout_margin="0dp"
-            android:layout_weight="1" />
-            <!-- style="@style/SecretBox.TextAppearance.Title" Removed -->
+            android:layout_weight="1"
+            android:hint="@string/compartmentNameHint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/new_compartment_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
             android:id="@+id/add"
