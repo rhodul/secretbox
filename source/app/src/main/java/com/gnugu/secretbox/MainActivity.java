@@ -17,7 +17,7 @@ import android.view.MenuItem;
 import android.view.View; 
 import android.view.Window; // For Window.FEATURE_NO_TITLE
 import android.widget.Toast;
-
+// Removed: import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity
             getSupportActionBar().setIcon(R.drawable.ic_action_sbox);
             Log.d(TAG, "SupportActionBar icon set");
         }
+        // === DIAGNOSTIC CODE REMOVED ===
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);

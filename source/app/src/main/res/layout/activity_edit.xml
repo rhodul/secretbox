@@ -6,7 +6,7 @@
 
     <EditText android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/SecretBox.TextAppearance.Title" />
+        android:layout_height="wrap_content" />
+        <!-- style="@style/SecretBox.TextAppearance.Title" Removed -->
 
 </LinearLayout>

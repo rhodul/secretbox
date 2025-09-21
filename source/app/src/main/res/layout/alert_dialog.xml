@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="0dp"
-        style="@style/SecretBox.AlertDialog.Button"
+        style="@style/AppTheme.AlertDialog.Button"
         android:text="@android:string/ok"
         />
 
