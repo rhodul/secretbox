@@ -11,4 +11,8 @@
         android:icon="@drawable/ic_action_accept"
         android:title="@android:string/ok"
         app:showAsAction="always|withText" />
+    <item android:id="@+id/action_delete_secret"
+        android:icon="@drawable/ic_action_discard"
+        android:title="@string/delete"
+        app:showAsAction="ifRoom" />
 </menu>

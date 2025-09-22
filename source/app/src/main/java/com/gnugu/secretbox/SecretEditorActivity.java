@@ -5,12 +5,9 @@ import java.util.Locale;
 import android.content.Intent;
 import android.database.Cursor;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar; // Added for Toolbar
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-// androidx.fragment.app.FragmentPagerAdapter; // Removed
-// import androidx.viewpager.widget.ViewPager; // Removed
-// import androidx.appcompat.app.ActionBar; // No longer needed for tabs
+// Removed unnecessary imports like FragmentTransaction, ViewPager, etc.
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
@@ -19,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-// Removed: implements ActionBar.TabListener
 public class SecretEditorActivity extends AppCompatActivity {
 
     public static final String ARG_COMPARTMENT_ID = "compartment_id";
@@ -28,7 +24,7 @@ public class SecretEditorActivity extends AppCompatActivity {
 
     private SecretEditorFragment mEditorFragment;
 
-    private boolean mEditMode = false;
+    private boolean mEditMode = false; // Default, will be updated in onCreate
     private long mCompartmentId;
     private long mSecretId;
     private DataAdapter mAdapter;
@@ -41,27 +37,28 @@ public class SecretEditorActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar_secret_editor);
         setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            // Optionally set title based on edit mode
-            // if (mEditMode) { // mEditMode is not yet initialized here
-            //    getSupportActionBar().setTitle(R.string.title_activity_secret_editor_edit);
-            // } else {
-            //    getSupportActionBar().setTitle(R.string.title_activity_secret_editor_new);
-            // }
-        }
 
         Intent intent = getIntent();
-        mEditMode = intent.getBooleanExtra(ARG_EDIT_MODE, false);
         mCompartmentId = intent.getLongExtra(ARG_COMPARTMENT_ID, -1);
         mSecretId = intent.getLongExtra(ARG_SECRET_ID, -1);
 
-        // Set title after mEditMode is initialized
+        // Determine initial mEditMode for the Activity
+        if (mSecretId == -1) { // New secret: activity and fragment start in edit mode
+            mEditMode = true;
+        } else { // Existing secret: activity mode from intent, fragment mode will match
+            mEditMode = intent.getBooleanExtra(ARG_EDIT_MODE, false);
+        }
+
+        // Set Toolbar icon and title
         if (getSupportActionBar() != null) {
-            if (mEditMode) {
-                getSupportActionBar().setTitle(R.string.edit);
-            } else {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setIcon(R.drawable.ic_action_sbox); // Set icon here
+            if (mSecretId == -1) { // New Secret title
                 getSupportActionBar().setTitle(R.string.insert);
+            } else if (mEditMode) { // Edit Existing Secret title
+                getSupportActionBar().setTitle(R.string.edit);
+            } else { // View Existing Secret title
+                getSupportActionBar().setTitle(R.string.secret);
             }
         }
 
@@ -71,7 +68,7 @@ public class SecretEditorActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             String title = null;
             String body = null;
-            if (mSecretId != -1 && mAdapter != null) {
+            if (mSecretId != -1 && mAdapter != null) { // Load data only for existing secrets
                 Cursor c = mAdapter.getSecret(mSecretId);
                 if (c != null) {
                     if (c.moveToFirst()) {
@@ -89,6 +86,7 @@ public class SecretEditorActivity extends AppCompatActivity {
                     c.close();
                 }
             }
+            // Pass the determined mEditMode to the fragment
             mEditorFragment = new SecretEditorFragment(title, body, mEditMode);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.secret_editor_fragment_container, mEditorFragment)
@@ -96,8 +94,9 @@ public class SecretEditorActivity extends AppCompatActivity {
         } else {
             mEditorFragment = (SecretEditorFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.secret_editor_fragment_container);
+            // Ensure fragment's edit mode is consistent with activity's mEditMode after restoration
             if (mEditorFragment != null) {
-                mEditorFragment.setEditMode(mEditMode); // Ensure mode is set on restored fragment
+                mEditorFragment.setEditMode(mEditMode);
             }
         }
     }
@@ -105,29 +104,23 @@ public class SecretEditorActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Always inflate the 'edit' menu which should contain 'Done'
-        // For 'new' mode, 'Cancel' might be handled by Up button or you might remove it.
-        // For 'edit' mode, 'Cancel' and 'Delete' are relevant.
-        getMenuInflater().inflate(R.menu.edit, menu);
-        MenuItem cancelItem = menu.findItem(R.id.action_cancel);
-        MenuItem deleteItem = menu.findItem(R.id.action_delete_secret);
-
-        if (mEditMode) {
+        menu.clear(); // Clear previous menu items
+        if (mEditMode) { // Covers New Secret (mSecretId == -1 implies mEditMode = true) and Edit Existing Secret
+            getMenuInflater().inflate(R.menu.edit, menu); // Has Done, Cancel, Delete
+            MenuItem cancelItem = menu.findItem(R.id.action_cancel);
             if (cancelItem != null) {
-                cancelItem.setTitle(cancelItem.getTitle().toString().toUpperCase());
-                cancelItem.setVisible(true);
+                cancelItem.setTitle(cancelItem.getTitle().toString().toUpperCase(Locale.getDefault()));
             }
+            MenuItem deleteItem = menu.findItem(R.id.action_delete_secret);
             if (deleteItem != null) {
-                deleteItem.setVisible(true); // Show delete only in edit mode for an existing secret
+                if (mSecretId == -1) { // New, unsaved secret
+                    deleteItem.setVisible(false); // Cannot delete a new, unsaved secret
+                } else {
+                    deleteItem.setVisible(true); // Can delete an existing secret being edited
+                }
             }
-        } else {
-            // In 'new' mode (not mEditMode)
-            if (cancelItem != null) {
-                cancelItem.setVisible(false); // Hide 'Cancel' if Up button is preferred
-            }
-            if (deleteItem != null) {
-                deleteItem.setVisible(false); // Hide 'Delete' for a new secret
-            }
+        } else { // View Existing Secret Mode (mSecretId != -1 && !mEditMode)
+            getMenuInflater().inflate(R.menu.secret_viewer, menu); // Has Edit, Delete
         }
         return true;
     }
@@ -136,7 +129,7 @@ public class SecretEditorActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == android.R.id.home) {
-            setResult(RESULT_CANCELED);
+            setResult(RESULT_CANCELED); // Or handle based on unsaved changes if necessary
             finish();
             return true;
         } else if (itemId == R.id.action_cancel) {
@@ -152,46 +145,58 @@ public class SecretEditorActivity extends AppCompatActivity {
             }
             return true;
         } else if (itemId == R.id.action_delete_secret) {
-            if (mSecretId != -1) { // Ensure there's a secret to delete
+            if (mSecretId != -1) { // Ensure there's an existing secret to delete
                 deleteSecret();
             }
             return true;
-        } else if (itemId == R.id.action_edit_secret) {
-            // This logic might be redundant if the activity always loads the fragment in the correct mode.
-            // If you intend to switch an already displayed secret to edit mode from a viewer mode (not implemented here):
-            setEditMode(true);
+        } else if (itemId == R.id.action_edit_secret) { // From secret_viewer menu
+            setEditMode(true); // Switch to edit mode for the current secret
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void setEditMode(boolean editMode) {
-        mEditMode = editMode;
-        invalidateOptionsMenu(); // Re-create options menu to show/hide items
+    // This method is called to switch an EXISTING secret between view and edit modes
+    private void setEditMode(boolean newModeState) {
+        if (mSecretId == -1 && !newModeState) {
+            // Cannot switch a new secret to "view" mode before it's saved.
+            // This scenario should ideally not occur with current logic.
+            return;
+        }
+
+        mEditMode = newModeState;
         if (mEditorFragment != null) {
             mEditorFragment.setEditMode(mEditMode);
         }
+
         if (getSupportActionBar() != null) {
-            if (mEditMode) {
-                getSupportActionBar().setTitle(R.string.edit);
-            } else {
-                getSupportActionBar().setTitle(R.string.insert);
+            // Title for existing secrets changes based on mEditMode
+            if (mSecretId != -1) { // Only change title if it's an existing secret
+                if (mEditMode) {
+                    getSupportActionBar().setTitle(R.string.edit);
+                } else {
+                    getSupportActionBar().setTitle(R.string.secret);
+                }
             }
+            // For new secrets (mSecretId == -1), title is set in onCreate and doesn't change via setEditMode.
         }
+        invalidateOptionsMenu(); // Re-create the menu for the new mode
     }
 
     private boolean writeSecret() {
         if (mEditorFragment == null) {
             return false;
         }
-
         String title = mEditorFragment.getTitle();
         String body = mEditorFragment.getBody();
 
         if (!TextUtils.isEmpty(title) && mAdapter != null) {
-            if (mSecretId == -1) {
+            if (mSecretId == -1) { // New secret
                 mSecretId = mAdapter.createSecret(mCompartmentId, title, body);
-            } else {
+                // After saving a new secret, it's now an "existing" secret.
+                // It should arguably switch to "View" mode or stay in "Edit" mode.
+                // Current behavior: finishes activity. If it stayed, mEditMode might need an update.
+            } else { // Update existing
                 mAdapter.updateSecret(mSecretId, title, body);
             }
             return true;
