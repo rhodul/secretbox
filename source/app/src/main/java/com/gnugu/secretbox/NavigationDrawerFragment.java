@@ -268,29 +268,6 @@ public class NavigationDrawerFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        if (mDrawerLayout != null && isDrawerOpen()) {
-            inflater.inflate(R.menu.drawer, menu);
-            showGlobalContextActionBar();
-        }
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle != null && mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-
-        if (item.getItemId() == R.id.action_change_password) {
-            startActivity(new Intent(requireActivity(), ChangePassword.class));
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     private void getAdapter() {
         if (getActivity() instanceof MainActivity) {
             MainActivity activity = (MainActivity) getActivity();

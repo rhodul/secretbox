@@ -156,6 +156,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_about) {
             startActivity(new Intent(this, AboutActivity.class));
             return true;
+        } else if (id == R.id.action_change_password) {
+            startActivity(new Intent(this, ChangePassword.class));
+            return true;
         } else if (id == R.id.action_delete_compartment) {
             deleteCompartment();
             return true;
