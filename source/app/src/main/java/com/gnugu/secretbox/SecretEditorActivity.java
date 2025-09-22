@@ -26,23 +26,7 @@ public class SecretEditorActivity extends AppCompatActivity implements ActionBar
     public static final String ARG_SECRET_ID = "secret_id";
     public static final String ARG_EDIT_MODE = "edit_mode";
 
-
-    /**
-     * The {@link androidx.viewpager.widget.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link androidx.fragment.app.FragmentStatePagerAdapter}.
-     */
-    private TabsPagerAdapter mTabsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    private ViewPager mViewPager;
     private SecretEditorFragment mEditorFragment;
-    private SecretEditorPicturesFragment mPicturesFragment;
 
     private boolean mEditMode = false;
     private long mCompartmentId;
@@ -68,41 +52,6 @@ public class SecretEditorActivity extends AppCompatActivity implements ActionBar
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         // actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS); // Deprecated
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mTabsPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
-
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mTabsPagerAdapter);
-
-        // When swiping between different sections, select the corresponding
-        // tab. We can also use ActionBar.Tab#select() to do this if we have
-        // a reference to the Tab.
-        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() { // Use addOnPageChangeListener for ViewPager
-            @Override
-            public void onPageSelected(int position) {
-                if (actionBar != null) {
-                    // actionBar.setSelectedNavigationItem(position); // Related to deprecated NAVIGATION_MODE_TABS
-                    // If using TabLayout, you would update it here: tabLayout.getTabAt(position).select();
-                }
-            }
-        });
-
-        // For each of the sections in the app, add a tab to the action bar.
-        // This loop is related to the deprecated NAVIGATION_MODE_TABS
-        // If using TabLayout, tabs are typically defined in XML or added to the TabLayout directly.
-        /*
-        if (actionBar != null) {
-            for (int i = 0; i < mTabsPagerAdapter.getCount(); i++) {
-                actionBar.addTab(
-                        actionBar.newTab()
-                                .setText(mTabsPagerAdapter.getPageTitle(i))
-                                .setTabListener(this));
-            }
-        }
-        */
     }
 
 
@@ -153,9 +102,6 @@ public class SecretEditorActivity extends AppCompatActivity implements ActionBar
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        // When the given tab is selected, switch to the corresponding page in
-        // the ViewPager.
-        mViewPager.setCurrentItem(tab.getPosition());
         // also if in edit mode, change menus between tabs
         if (mEditMode) {
             invalidateOptionsMenu(); // Corrected API call
@@ -220,10 +166,11 @@ public class SecretEditorActivity extends AppCompatActivity implements ActionBar
                 return mEditorFragment;
             }
 
-            if (mPicturesFragment == null) {
-                mPicturesFragment = new SecretEditorPicturesFragment();
-            }
-            return mPicturesFragment;
+//            if (mPicturesFragment == null) {
+//                mPicturesFragment = new SecretEditorPicturesFragment();
+//            }
+//            return mPicturesFragment;
+            return null;
         }
 
         @Override
