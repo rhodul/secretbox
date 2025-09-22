@@ -8,6 +8,8 @@ import javax.crypto.BadPaddingException;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity; // Corrected import
+import androidx.appcompat.widget.Toolbar;
+
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MenuItem;
@@ -36,6 +38,15 @@ public final class ChangePassword extends AppCompatActivity { // Corrected base 
 		super.onCreate(savedInstanceState);
 
 		this.setContentView(R.layout.change_password);
+
+		Toolbar toolbar = findViewById(R.id.toolbar_change_password);
+		setSupportActionBar(toolbar);
+
+		if (getSupportActionBar() != null) {
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+			getSupportActionBar().setIcon(R.drawable.ic_action_sbox); // Set icon
+			getSupportActionBar().setTitle(R.string.changePassword);          // Set title
+		}
 
 		_oldPwd = (EditText) this.findViewById(R.id.oldPassword);
 		// when we use android:password attribute in the layout file
