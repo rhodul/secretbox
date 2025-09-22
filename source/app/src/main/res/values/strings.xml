@@ -63,8 +63,9 @@
     -->
     <string name="cannotAddPictures">Pictures cannot be added for a secret with no title. Edit the title first.</string>
     <string name="nothing_here">Nothing Here</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="error_title_empty" translatable="false">Title cannot be empty</string>
     <string name="about">About</string>
     <string name="aboutText">
 <![CDATA["
